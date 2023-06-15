@@ -5,6 +5,8 @@ import { userLogin } from "../../../config/setting";
 import { userManagement } from "../../../services/UserManagementServices";
 import { Redirect } from "react-router-dom";
 import CreditModal from "../CreditModal/CreditModal";
+
+
 export default function Checkout(props) {
   let { thongTinPhongVe, danhSachGheDangDat, param } = props;
   const renderThongTinGheDangDat = () => {

@@ -1,11 +1,11 @@
 import axios from "axios";
 import { domain, token } from "../config/setting";
 export class UserManagement {
-  login = ({ username, password }) => {
+  login = (account) => {
     return axios({
       url: 'http://localhost:8080/api/sf/account/login',
       method: "POST",
-      data: { username, password },
+      data: account,
     });
   };
   signup = (newUser) => {

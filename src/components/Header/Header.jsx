@@ -63,7 +63,7 @@ export default function Header(props) {
   };
 
   const renderLogin = () => {
-    if (account) {
+    if (account !== '') {
       return (
         <Fragment>
           <div
