@@ -1,0 +1,1 @@
+export const DISPLAY_DETAILS = "DISPLAY_DETAILS  ";
