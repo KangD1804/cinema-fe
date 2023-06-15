@@ -37,6 +37,7 @@ const Login = (props) => {
       .then((res) => {
         localStorage.setItem(userLogin, JSON.stringify(res.data));
         localStorage.setItem(token, res.data.accessToken);
+        console.log(res.data);
         dispatch(loginAction(res.data.username));
         swal({
           title: "Đăng nhập thành công",
