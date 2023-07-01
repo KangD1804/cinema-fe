@@ -9,22 +9,21 @@ import { movieManagement } from "../services/MovieManagementServices";
 import SpinnerLoading from "../components/SpinnerLoading/SpinnerLoading";
 
 export default function Home() {
-  let [danhSachPhim, setDanhSachPhim] = React.useState([]);
-  const [loading, $loading] = React.useState(true);
+  let [movieList, setMovieList] = React.useState([]);
+    const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     movieManagement
       .getMovieList()
       .then((result) => {
         if (result) {
-          setTimeout(() => {
-            setDanhSachPhim(result.data);
-            $loading(false);
-          }, 1500);
-        }
+            setMovieList(result.data.dataList.datalist);
+          setLoading(false);
+          }
+
       })
       .catch((err) => {
-        console.log(err.response.data);
+        console.log(err.response.data.datalist);
       });
   }, []);
   return (
@@ -34,7 +33,7 @@ export default function Home() {
       ) : (
         <>
           <Carousel />
-          <ListMovie danhSachPhim={danhSachPhim} />
+          <ListMovie movieList={movieList} />
           <ScrollAnimation animateIn="fadeIn">
             <ShowTimeHome />
           </ScrollAnimation>

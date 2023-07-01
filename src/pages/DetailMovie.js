@@ -5,14 +5,15 @@ import ShowTime from "../components/DetailMovie/ShowTime/ShowTime";
 import SpinnerLoading from "../components/SpinnerLoading/SpinnerLoading";
 
 const DetailMovie = (props) => {
-  let [phim, setPhim] = useState([]);
+  let [movie, setMovie] = useState([]);
   const [loading, $loading] = useState(true);
   const movieId = props.match.params.maphim;
+
   useMemo(
     () =>
       movieManagement.getMovieInfo(movieId).then((result) => {
         setTimeout(() => {
-          setPhim(result.data);
+          setMovie(result.data.dataList);
           $loading(false);
         }, 1500);
       }),
@@ -25,8 +26,8 @@ const DetailMovie = (props) => {
         <SpinnerLoading />
       ) : (
         <>
-          <MovieInfo phimItem={phim} />
-          <ShowTime phim={phim} movieId={movieId} />
+          <MovieInfo movieItem={movie} />
+          {/*<ShowTime movie={movie} movieId={movieId} />*/}
         </>
       )}
     </Fragment>

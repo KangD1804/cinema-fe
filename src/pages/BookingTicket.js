@@ -10,10 +10,10 @@ export default function BookingTicket(props) {
     movieManagement
       .getShowtimesInfo(maLichChieu)
       .then((result) => {
-        setThongTinPhongVe(result.data);
+        setThongTinPhongVe(result.data.dataList);
       })
       .catch((err) => {
-        console.log(err.response.data);
+        // console.log(err.response.data);
       });
   }, [maLichChieu]);
   return (

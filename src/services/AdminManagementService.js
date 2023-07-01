@@ -52,11 +52,11 @@ export class AdminManagement {
     });
   };
 
-  editMovie = (phim) => {
+  editMovie = (movie) => {
     return axios({
       url: `${domain}/QuanLyPhim/CapNhatPhim`,
       method: "POST",
-      data: phim,
+      data: movie,
       headers: {
         Authorization: "Bearer " + localStorage.getItem(token),
       },
