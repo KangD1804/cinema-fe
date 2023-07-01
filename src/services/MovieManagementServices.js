@@ -1,21 +1,31 @@
 import axios from "axios";
 import { domain, groupID } from "../config/setting";
+
 export class MovieManagementServices {
   getMovieList = () => {
     return axios({
-      url: `${domain}/quanLyPhim/laydanhsachphim?manhom=${groupID}`,
+      url: 'http://localhost:8080/api/movies',
       method: "GET",
     });
   };
+
+  getMovieListWithPagination = (page, size) => {
+    return axios.get(`http://localhost:8080/api/movies?page=${page}&size=${size}`);
+  };
+
+  searchMoviesByNameWithPagination = (name, page, size) => {
+    return axios.get(`http://localhost:8080/api/movies/search?name=${name}&page=${page}&size=${size}`);
+  };
+
   getMovieInfo = (movieId) => {
     return axios({
-      url: `${domain}/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${movieId}`,
+      url:`http://localhost:8080/api/movies/${movieId}`,
       method: "GET",
     });
   };
   getTheaterSystems  = () => {
     return axios({
-      url: `${domain}/QuanLyRap/LayThongTinHeThongRap`,
+      url: `http://localhost:8080/api/theaters`,
       method: "GET",
     });
   };

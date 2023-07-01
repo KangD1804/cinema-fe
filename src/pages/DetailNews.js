@@ -10,7 +10,7 @@ export default function DetailNews(props) {
   useMemo(() => {
     movieManagement.getNewsDetail(maTinTuc).then((result) => {
       setTimeout(() => {
-        setTinTuc(result.data);
+        setTinTuc(result.data.dataList);
         $loading(false);
       }, 1500);
     });
@@ -28,7 +28,7 @@ export default function DetailNews(props) {
         }, 1500);
       })
       .catch((err) => {
-        console.log(err.response.data);
+        // console.log(err.response.data);
       });
   }, []);
 

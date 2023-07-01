@@ -1,4 +1,4 @@
-import { DISPLAY_DETAILS } from "../types/MovieManagementTypes";
+/*import { DISPLAY_DETAILS } from "../types/MovieManagementTypes";
 
 const initialState = {
   movieInfo: {
@@ -23,4 +23,34 @@ export default (state = initialState, action) => {
     default:
   }
   return { ...state };
+};*/
+
+
+import { DISPLAY_DETAILS } from "../types/MovieManagementTypes";
+
+const initialState = {
+  movieInfo: {
+    movieId: "",
+    movieName: "",
+    alias: "",
+    imageUrl: "",
+    trailer: "",
+    description: "",
+    releaseDate: "",
+    groupCode: "",
+    rating: "",
+  },
+};
+
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case DISPLAY_DETAILS: {
+      return {
+        ...state,
+        movieInfo: action.values,
+      };
+    }
+    default:
+      return state;
+  }
 };
